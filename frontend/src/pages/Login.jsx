@@ -1,5 +1,4 @@
-// src/pages/Login.jsx
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +19,7 @@ function Login() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const res = await axios.post("https://attendance-tracker-bktf.onrender.com/api/auth/login", formData);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.user._id);
       navigate("/calendar");

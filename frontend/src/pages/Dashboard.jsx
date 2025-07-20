@@ -39,7 +39,7 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchAttendance = async () => {
-      const res = await axios.get(`http://localhost:5000/api/attendance/${userId}`);
+      const res = await axios.get(`https://attendance-tracker-bktf.onrender.com/api/attendance/${userId}`);
       calculateSummary(res.data);
     };
     fetchAttendance();
