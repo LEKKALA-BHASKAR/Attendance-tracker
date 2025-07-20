@@ -1,6 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Attendance = require("../models/Attendance");
+const express = require("express");
+const { generateAttendanceReport } = require("../controllers/attendanceController");
+const { protect } = require("../middleware/authMiddleware");
+
+
+router.get("/report", protect, generateAttendanceReport);
+
 
 router.post("/mark", async (req, res) => {
   const { userId, date, status } = req.body;
