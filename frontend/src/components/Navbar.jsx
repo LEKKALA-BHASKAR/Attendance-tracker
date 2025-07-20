@@ -15,7 +15,7 @@ function Navbar() {
     { path: "/dashboard", label: "Dashboard", icon: "📊" },
     { 
       path: "/login", 
-      label: "Logout", 
+      label: "Login", 
       icon: "🚪",
       onClick: () => {
         localStorage.clear();
@@ -65,7 +65,7 @@ function Navbar() {
 
           {/* Logo/Brand can be added here */}
           <div className="text-white font-bold text-xl hidden md:block">
-            MyApp
+            Attendance Tracker
           </div>
         </div>
       </div>
