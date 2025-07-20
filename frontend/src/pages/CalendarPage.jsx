@@ -15,6 +15,28 @@ function CalendarPage() {
     const res = await axios.get(`https://attendance-tracker-bktf.onrender.com/api/attendance/${userId}`);
     setAttendance(res.data);
   };
+  const downloadReport = async () => {
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch("https://attendance-tracker-bktf.onrender.com/api/attendance/report", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Attendance_Report.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  } catch (err) {
+    console.error("Download error", err);
+  }
+};
 
   const handleDateClick = (date) => {
     setSelectedDate(date);
@@ -100,6 +122,13 @@ function CalendarPage() {
           </select>
         </div>
       )}
+      <button
+  onClick={downloadReport}
+  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+>
+  Download PDF Report
+</button>
+
     </div>
   );
 }
