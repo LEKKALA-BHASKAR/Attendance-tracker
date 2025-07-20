@@ -10,6 +10,12 @@ function Login() {
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  useEffect(() => {
+  if (localStorage.getItem("token")) {
+    navigate("/calendar");
+  }
+}, []);
+
 
   const handleSubmit = async e => {
     e.preventDefault();

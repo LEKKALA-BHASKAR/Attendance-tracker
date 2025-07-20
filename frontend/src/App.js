@@ -3,6 +3,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CalendarPage from "./pages/CalendarPage";
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {
@@ -12,8 +13,8 @@ function App() {
         <Navbar />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/calendar" element={<PrivateRoute><CalendarPage /></PrivateRoute>} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
       </Routes>
     </Router>
   );
